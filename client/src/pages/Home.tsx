@@ -6,10 +6,10 @@ import { useLocation } from "wouter";
 import { Package, BarChart3, ShoppingCart, FileText, Zap } from "lucide-react";
 
 export default function Home() {
-  const { user, isAuthenticated } = useAuth();
   const [, navigate] = useLocation();
 
-  if (isAuthenticated) {
+  // Always show authenticated view (no login required)
+  if (true) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
         {/* Header */}
@@ -21,8 +21,8 @@ export default function Home() {
                 <p className="text-slate-600 mt-1">Complete Procurement & Inventory Management System</p>
               </div>
               <div className="text-right">
-                <p className="text-sm text-slate-600">Welcome back,</p>
-                <p className="font-semibold text-slate-900">{user?.name || "User"}</p>
+                <p className="text-sm text-slate-600">Factory Inventory System</p>
+                <p className="font-semibold text-slate-900">v1.0</p>
               </div>
             </div>
           </div>
@@ -200,15 +200,5 @@ export default function Home() {
     );
   }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
-      <div className="text-center text-white">
-        <h1 className="text-5xl font-bold mb-4">Factory Store Inventory</h1>
-        <p className="text-xl mb-8 text-blue-100">Complete Procurement & Inventory Management System</p>
-        <Button size="lg" onClick={() => (window.location.href = getLoginUrl())} className="bg-white text-blue-600 hover:bg-blue-50">
-          Sign In to Continue
-        </Button>
-      </div>
-    </div>
-  );
+  return null; // Not reached - always authenticated
 }
